@@ -135,7 +135,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Developed by Max Santos</string>
+    <string> Developed by Max Santos</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">

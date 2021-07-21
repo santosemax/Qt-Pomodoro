@@ -1,5 +1,4 @@
 #!/usr/local/bin/python3
-
 import sys
 from PyQt5 import QtWidgets as qtw   # Widgets/Layout Classses
 from PyQt5 import QtCore as qtc      # Contains signals and slots
@@ -14,6 +13,9 @@ class MainWindow(baseClass):
 
         self.ui = Ui_LoginForm()
         self.ui.setupUi(self)
+
+        self.setFixedSize(481, 196)    
+
 
         self.show()
 
