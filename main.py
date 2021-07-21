@@ -1,21 +1,24 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
+
 import sys
-from PyQt5 import QtWidgets as QtW
-from PyQt5 import QtCore as QtC
-from PyQt5 import QtGui as QtG
+from PyQt5 import QtWidgets as qtw   # Widgets/Layout Classses
+from PyQt5 import QtCore as qtc      # Contains signals and slots
+from PyQt5 import QtGui as qtg       # Other gui classes (fonts/colors/etc)
+from PyQt5 import uic                # Import ui File
 
-from test import Ui_Form
+Ui_LoginForm, baseClass = uic.loadUiType('design.ui')
 
-class MainWindow(QtW.QWidget):
+class MainWindow(baseClass):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.ui = Ui_Form()
+
+        self.ui = Ui_LoginForm()
         self.ui.setupUi(self)
-        # Application Logic Goes Here:
 
         self.show()
 
+
 if __name__ == '__main__':
-    application = QtW.QApplication(sys.argv)
-    window = MainWindow()
-    sys.exit(application.exec_())
+    app = qtw.QApplication(sys.argv)
+    w = MainWindow()
+    sys.exit(app.exec_())
