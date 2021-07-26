@@ -138,7 +138,7 @@
     <string> Developed by Max Santos</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="reset_button">
    <property name="geometry">
     <rect>
      <x>370</x>
