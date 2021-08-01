@@ -5,6 +5,7 @@ from PyQt5 import QtCore as qtc      # Contains signals and slots from PyQt5 imp
 from PyQt5 import uic, QtMultimedia  # (Fonts/colors/etc) (Unused)
 from design import Ui_Form
 from editTime import Ui_Form as editWin
+from tips import Ui_Form as tipWin
 
 # Handles all timer functions
 class Thread(qtc.QThread):
@@ -15,9 +16,9 @@ class Thread(qtc.QThread):
     break_active = False
     long_break_ticker = 0
     long_break_active = False
-    rotationTime = 1
-    breakTime = 1
-    longTime = 3
+    rotationTime = 25
+    breakTime = 5
+    longTime = 15
     Min, Sec = rotationTime, 0
     progress = 0
 
@@ -84,7 +85,19 @@ class editWindow(qtw.QWidget):
     def exit(self):
         self.close()
 
+class tipsWindow(qtw.QWidget):
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.ui = tipWin()
+        self.ui.setupUi(self)
+        self.setFixedSize(400, 206)
+        self.setWindowTitle("Rotations Tips")
+
+        self.ui.exit_button.clicked.connect(self.exit)
+
+    def exit(self):
+        self.close()
 class MainWindow(qtw.QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -95,13 +108,14 @@ class MainWindow(qtw.QWidget):
         self.setWindowTitle("Rotations - Timer")
         self.thread = Thread()
         self.w = editWindow()
+        self.t = tipsWindow()
         self.active = False
 
         self.ui.start_button.clicked.connect(self.start_timer)
         self.ui.pause_button.clicked.connect(self.stop_timer)
         self.ui.reset_button.clicked.connect(self.reset_timer)
         self.ui.edit_button.clicked.connect(self.edit_timer)
-        #self.ui.help_button.clicked.connect(self.help_window)
+        self.ui.help_button.clicked.connect(self.help_window)
         self.ui.pause_button.setEnabled(False)
         self.ui.progressBar.setMaximum((self.thread.Min * 60) * 4)
         
@@ -125,9 +139,14 @@ class MainWindow(qtw.QWidget):
         if self.thread.isStarted == True:
             self.ui.start_button.setText("Resume")
 
+    def help_window(self):
+       self.t.show()
+
     def reset_timer(self):
-        self.thread.Min = 25
+        self.thread.Min = self.thread.rotationTime
         self.thread.Sec = 0
+        self.thread.isStarted = False
+        self.thread.progress = 0
         self.ui.timer.setText(f"{self.thread.Min}:{self.thread.Sec:02}")
         self.ui.start_button.setEnabled(True)
         self.ui.pause_button.setEnabled(False)
