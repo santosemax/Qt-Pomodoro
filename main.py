@@ -13,9 +13,11 @@ class Thread(qtc.QThread):
     active = False
     isStarted = False
     break_active = False
-    rotationTime = 25
-    breakTime = 5
-    longTime = 15
+    long_break_ticker = 0
+    long_break_active = False
+    rotationTime = 2
+    breakTime = 1
+    longTime = 3
     Min, Sec = rotationTime, 0
     progress = 0
 
@@ -29,15 +31,25 @@ class Thread(qtc.QThread):
                 # Break Logic
                 if self.Min < 0:
                     self.break_active = not self.break_active
-                    if self.break_active == True:
+                    if self.break_active == True and self.long_break_ticker < 3:
                         self.Min = self.breakTime
                         self.Sec = 0
                         self.isStarted = False
                         print("-- Break Time Started --")
+                    elif self.break_active == True and self.long_break_ticker == 3:
+                        self.long_break_active = not self.long_break_active
+                        self.Min = self.longTime
+                        self.Sec = 0
+                        self.isStarted = False
+                        self.long_break_ticker = -1
+                        self.progress = 0
+                        print("-- Long Break Started --")
                     else:
                         self.Min = self.rotationTime
                         self.Sec = 0
                         self.isStarted = False
+                        self.long_break_ticker += 1
+                        print(f"Long Break Ticker = {self.long_break_ticker}")
                         print("-- Break Time Ended --")
             self.time_signal.emit([self.Min, self.Sec])
             if self.break_active != True:
@@ -80,7 +92,7 @@ class MainWindow(qtw.QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self) 
         self.setFixedSize(481, 196)
-        self.setWindowTitle("QT Pomo - Timer")
+        self.setWindowTitle("Rotations - Timer")
         self.thread = Thread()
         self.w = editWindow()
         self.active = False
@@ -90,7 +102,7 @@ class MainWindow(qtw.QWidget):
         self.ui.reset_button.clicked.connect(self.reset_timer)
         self.ui.edit_button.clicked.connect(self.edit_timer)
         self.ui.pause_button.setEnabled(False)
-        self.ui.progressBar.setMaximum((self.thread.Min * 60) * 3)
+        self.ui.progressBar.setMaximum((self.thread.Min * 60) * 4)
         
         # Code ends here
         self.show()

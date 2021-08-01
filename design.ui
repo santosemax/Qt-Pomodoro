@@ -105,7 +105,7 @@
     </font>
    </property>
    <property name="text">
-    <string>QT Pomo</string>
+    <string>Rotations</string>
    </property>
   </widget>
   <widget class="QPushButton" name="edit_button">
@@ -125,15 +125,15 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>170</y>
+     <y>160</y>
      <width>121</width>
-     <height>20</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Arial</family>
-     <pointsize>10</pointsize>
+     <pointsize>8</pointsize>
      <italic>false</italic>
     </font>
    </property>
@@ -152,6 +152,19 @@
    </property>
    <property name="text">
     <string>Reset</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="help_button">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>150</y>
+     <width>31</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>?</string>
    </property>
   </widget>
  </widget>
