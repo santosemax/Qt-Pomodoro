@@ -2,7 +2,7 @@
 import sys, time 
 from PyQt5 import QtWidgets as qtw   # Widgets/Layout Classses
 from PyQt5 import QtCore as qtc      # Contains signals and slots from PyQt5 import QtGui as qtg       
-from PyQt5 import uic                # (Fonts/colors/etc) (Unused)
+from PyQt5 import uic, QtMultimedia  # (Fonts/colors/etc) (Unused)
 from design import Ui_Form
 from editTime import Ui_Form as editWin
 
@@ -15,7 +15,7 @@ class Thread(qtc.QThread):
     break_active = False
     long_break_ticker = 0
     long_break_active = False
-    rotationTime = 2
+    rotationTime = 1
     breakTime = 1
     longTime = 3
     Min, Sec = rotationTime, 0
@@ -101,6 +101,7 @@ class MainWindow(qtw.QWidget):
         self.ui.pause_button.clicked.connect(self.stop_timer)
         self.ui.reset_button.clicked.connect(self.reset_timer)
         self.ui.edit_button.clicked.connect(self.edit_timer)
+        #self.ui.help_button.clicked.connect(self.help_window)
         self.ui.pause_button.setEnabled(False)
         self.ui.progressBar.setMaximum((self.thread.Min * 60) * 4)
         
@@ -141,6 +142,8 @@ class MainWindow(qtw.QWidget):
     def function_thread(self, signal): 
         self.ui.timer.setText(f"{signal[0]}:{signal[1]:02}")
         self.ui.progressBar.setValue(self.thread.progress)
+        if signal[0] and signal[1] == 0:
+            QtMultimedia.QSound.play("sound/bell.wav") 
         print(signal) # Debug Line
 
     # Edit Time Slot
@@ -156,7 +159,6 @@ class MainWindow(qtw.QWidget):
         self.ui.start_button.setEnabled(True)
         self.ui.pause_button.setEnabled(False)
         self.ui.start_button.setText("Start")
-
 
 
 if __name__ == '__main__':
