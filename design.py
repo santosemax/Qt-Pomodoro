@@ -60,7 +60,7 @@ class Ui_Form(object):
         self.big_label.setGeometry(QtCore.QRect(20, 140, 181, 31))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        font.setPointSize(30)
+        font.setPointSize(28)
         font.setItalic(False)
         self.big_label.setFont(font)
         self.big_label.setObjectName("big_label")

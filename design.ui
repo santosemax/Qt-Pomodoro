@@ -100,7 +100,7 @@
    <property name="font">
     <font>
      <family>Futura</family>
-     <pointsize>30</pointsize>
+     <pointsize>28</pointsize>
      <italic>false</italic>
     </font>
    </property>
