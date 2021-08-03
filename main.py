@@ -91,7 +91,7 @@ class tipsWindow(qtw.QWidget):
         super().__init__(*args, **kwargs)
         self.ui = tipWin()
         self.ui.setupUi(self)
-        self.setFixedSize(400, 206)
+        self.setFixedSize(400, 228)
         self.setWindowTitle("Rotations Tips")
 
         self.ui.exit_button.clicked.connect(self.exit)
@@ -161,7 +161,7 @@ class MainWindow(qtw.QWidget):
     def function_thread(self, signal): 
         self.ui.timer.setText(f"{signal[0]}:{signal[1]:02}")
         self.ui.progressBar.setValue(self.thread.progress)
-        if signal[0] and signal[1] == 0:
+        if signal[0] == 0 and signal[1] == 0:
             QtMultimedia.QSound.play("sound/bell.wav") 
         print(signal) # Debug Line
 

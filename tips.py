@@ -14,9 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(400, 206)
+        Form.resize(400, 228)
         self.gridLayoutWidget = QtWidgets.QWidget(Form)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 381, 151))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 381, 171))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -41,7 +41,7 @@ class Ui_Form(object):
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 3, 0, 1, 1)
         self.exit_button = QtWidgets.QPushButton(Form)
-        self.exit_button.setGeometry(QtCore.QRect(280, 170, 101, 32))
+        self.exit_button.setGeometry(QtCore.QRect(290, 190, 101, 32))
         self.exit_button.setObjectName("exit_button")
 
         self.retranslateUi(Form)
@@ -53,5 +53,5 @@ class Ui_Form(object):
         self.label_2.setText(_translate("Form", "- You can edit your rotation, break, and long break times by using the \'Edit Timer\' button."))
         self.label_3.setText(_translate("Form", "- \'Reset\' button resets your entire progress and timer."))
         self.label.setText(_translate("Form", "Tips:"))
-        self.label_4.setText(_translate("Form", "- The progress bar fills up as your progress towards your long break. After three rotations (when the progress bar fills up), your long break will begin"))
+        self.label_4.setText(_translate("Form", "- The progress bar fills up as your progress towards your long break.  After three rotations (when the progress bar fills up), your long break will begin."))
         self.exit_button.setText(_translate("Form", "Got it."))
