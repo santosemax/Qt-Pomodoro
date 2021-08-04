@@ -38,3 +38,24 @@ exe = EXE(pyz,
           target_arch=None,
           codesign_identity=None,
           entitlements_file=None , icon='images/icon_final.ico')
+
+exe = EXE(pyz,
+          a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
+          name='Rotations',
+          debug=False,
+          strip=False,
+          upx=True,
+          runtime_tmpdir=None,
+          console=False,
+          icon='images/icon_final-1024.png')
+
+# Package the executable file into .app if on OS X
+app = BUNDLE(exe,
+            name='Rotations.app',
+            info_plist={
+              'NSHighResolutionCapable': 'True'
+            },
+            icon='images/icon_final-1024.png')

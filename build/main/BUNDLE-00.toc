@@ -1,0 +1,3 @@
+([('Rotations',
+   '/Users/maxsantos/Documents/Rotations/dist/Rotations',
+   'EXECUTABLE')],)
