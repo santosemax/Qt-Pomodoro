@@ -1,7 +1,10 @@
 # Rotations
+
+<img src="images/icon_final-128.png" width="100">
+                                             
+
 Since I can't find anything useful to provide a easy work timer on Linux, I made a simple pomodoro timer on both Linux and macOS:
 
-![](images/icon_final-256.png)
 
 ![](images/RotationsApp.jpeg)
 
