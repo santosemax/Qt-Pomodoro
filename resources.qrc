@@ -1,0 +1,9 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="icons">
+        <file alias="icon_final.ico">images/icon_final.ico</file>
+    </qresource>
+    <qresource prefix="sounds">
+        <file alias="bell.wav">sound/bell.wav</file>
+    </qresource>
+</RCC>

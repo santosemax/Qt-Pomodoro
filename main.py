@@ -3,9 +3,11 @@ import sys, time
 from PyQt5 import QtWidgets as qtw   # Widgets/Layout Classses
 from PyQt5 import QtCore as qtc      # Contains signals and slots from PyQt5 import QtGui as qtg       
 from PyQt5 import uic, QtMultimedia  # (Fonts/colors/etc) (Unused)
+from PyQt5 import QtGui as qtg
 from design import Ui_Form
 from editTime import Ui_Form as editWin
 from tips import Ui_Form as tipWin
+import resources
 
 # Handles all timer functions
 class Thread(qtc.QThread):
@@ -106,6 +108,7 @@ class MainWindow(qtw.QWidget):
         self.ui.setupUi(self) 
         self.setFixedSize(481, 196)
         self.setWindowTitle("Rotations - Timer")
+        self.setWindowIcon(qtg.QIcon(":/icons/icon_final.ico"))
         self.thread = Thread()
         self.w = editWindow()
         self.t = tipsWindow()
@@ -162,7 +165,7 @@ class MainWindow(qtw.QWidget):
         self.ui.timer.setText(f"{signal[0]}:{signal[1]:02}")
         self.ui.progressBar.setValue(self.thread.progress)
         if signal[0] == 0 and signal[1] == 0:
-            QtMultimedia.QSound.play("sound/bell.wav") 
+            QtMultimedia.QSound.play(":sounds/bell.wav") 
         print(signal) # Debug Line
 
     # Edit Time Slot
