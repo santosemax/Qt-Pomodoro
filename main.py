@@ -67,7 +67,7 @@ class editWindow(qtw.QWidget):
         self.ui.setupUi(self) 
         self.setFixedSize(372, 105)
         self.setWindowTitle("Configure Timer")
-        self.setWindowFlags(qtc.Qt.WindowStaysOnTopHint | qtc.Qt.FramelessWindowHint)
+        #self.setWindowFlags(qtc.Qt.WindowStaysOnTopHint | qtc.Qt.FramelessWindowHint)
 
         self.ui.cancel_button.clicked.connect(self.exit)
         self.ui.apply_button.clicked.connect(self.apply)
